@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Provincias</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="scroll">
+        <button ngbDropdownItem *ngFor="let item of codigos[0].listaprovincias" value="{{ item.cod }}"
+          (click)="creacionMunicipios(item)">{{ item.nombre }}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div ngbDropdown class="d-inline-block" >
+      <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle *ngIf="municipios.length > 0">municipios</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="scroll">
+        <button ngbDropdownItem *ngFor="let item of municipios" value="{{ item.codProvincia+item.cod }}"
+          (click)="valorMunicipio(item)">{{ item.nombre }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-center">{{ weather.name }}</p>
+
+<div class="card-deck">
+  <div class="card d-flex" style="width: 18rem;" *ngFor="let data of weather.temperaturamunicipio">
+    <div class="card-body">
+      <h5 class="card-title">{{data.fechatexto}}</h5>
+      <p> Máxima: {{data.maxima}} <fa-icon [icon]="faTHigh"></fa-icon></p>
+      <p> Mínima: {{data.minima}} <fa-icon [icon]="faTLow"></fa-icon></p>
+    </div>
+  </div>
+</div>
